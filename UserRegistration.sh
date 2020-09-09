@@ -7,7 +7,7 @@ firstNamePattern=^[[:upper:]]{1,}[A-Za-z]{2,}$
 lastNamePattern=^[[:upper:]]{1,}[A-Za-z]{2,}$
 emailPattern="^[[:lower:]]{3}[a-zA-Z0-9]*([-+.]?[a-zA-Z0-9])*@[a-z]*.[a-z]{2,3}([.][a-z]{2,3})*$"
 mobilePattern="^[0-9]{2}[[:space:]][0-9]{10}$"
-passwordPattern="[a-zA-Z0-9!@#$%^&*()-_+.,]{8,}"
+passwordPattern="[a-zA-Z0-9!@#$%^&*()-_+.,]"
 
 
 
@@ -47,7 +47,7 @@ else
 	echo invalid mobile pattern
 fi
 
-if [[ $password =~ $passwordPattern ]]
+if [[ ${#password} -gt 7 && $password =~ $passwordPattern && $password =~ [[:upper:]] ]]
 then
 	echo valid password pattern
 else
