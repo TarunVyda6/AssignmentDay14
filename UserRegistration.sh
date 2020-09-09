@@ -47,7 +47,7 @@ else
 	echo invalid mobile pattern
 fi
 
-if [[ ${#password} -gt 7 && $password =~ $passwordPattern && $password =~ [[:upper:]] ]]
+if [[ ${#password} -gt 7 && $password =~ $passwordPattern && $password =~ [[:upper:]] && $password =~ [[:digit:]] ]]
 then
 	echo valid password pattern
 else
