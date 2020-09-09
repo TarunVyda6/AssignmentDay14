@@ -10,13 +10,15 @@ mobilePattern="^[0-9]{2}[[:space:]][0-9]{10}$"
 passwordPattern="[a-zA-Z0-9!@#$%^&*()-_+.,]"
 
 
-
 #inputs
 read -p "enter first name : " firstName
 read -p "enter last name : "  lastName
 read -p "enter the email : " email
 read -p "enter the mobile number : " mobile
 read -p "enter the password : " password
+
+
+PasswordCharacterCheck=$(($(tr -d '[[:alnum:]]' <<< $password | wc -m)-1))
 
 #checking conditions
 if [[ $firstName =~ $firstNamePattern ]]
@@ -47,7 +49,7 @@ else
 	echo invalid mobile pattern
 fi
 
-if [[ ${#password} -gt 7 && $password =~ $passwordPattern && $password =~ [[:upper:]] && $password =~ [[:digit:]] ]]
+if [[ ${#password} -gt 7 && $password =~ $passwordPattern && $password =~ [[:upper:]] && $password =~ [[:digit:]] && $PasswordCharacterCheck =~ 1 ]]
 then
 	echo valid password pattern
 else
